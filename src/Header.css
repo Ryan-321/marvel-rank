@@ -1,0 +1,12 @@
+.Header {
+  text-align: center;
+  background-color: rgba(0,0,0,.5);
+  box-shadow: 0 0 5px rgba(0,0,0,.7),
+              2px 2px 2px rgba(0,0,0,.3);
+  padding: 1em;
+}
+
+.Header--h1{
+  padding: 0;
+  margin: 0;
+}
