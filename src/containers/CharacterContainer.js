@@ -35,8 +35,10 @@ class CharacterContainer extends Component {
     }
   }
 
-  handleDelete () {
-
+  handleDelete (id) {
+    const characters = this.state.characters
+    let newState = characters.filter(character => character.id !== id)
+    this.setState({characters: newState})
   }
 
   render () {
@@ -50,6 +52,7 @@ class CharacterContainer extends Component {
             bio={bio}
             key={id}
             index={id}
+            handleDelete={this.handleDelete}
           />
         })}
       </section>

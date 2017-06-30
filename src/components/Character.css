@@ -11,7 +11,11 @@
   top: -5px;
 }
 
-.Character:hover::after {
+.Character:hover .Character--delete {
+  display: inherit;
+}
+
+.Character--delete {
   position: absolute;
   top: -10px;
   right: -10px;
@@ -23,6 +27,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   cursor: pointer;
+  display: none;
 }
 
 .Character--img {
