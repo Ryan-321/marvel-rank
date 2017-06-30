@@ -2,6 +2,11 @@
   padding: 2em;
 }
 
+.Form--label {
+  display: block;
+  padding-bottom: 5px;
+}
+
 .Form--btn {
   margin-left: 1em;
 }

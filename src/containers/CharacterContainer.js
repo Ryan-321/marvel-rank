@@ -1,7 +1,10 @@
+/* global fetch */
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Character from '../components/Character'
+import characterHelper from '../utils/characterHelper'
 import apiKey from '../secret'
+import './CharacterContainer.css'
 
 class CharacterContainer extends Component {
   constructor (props) {
@@ -10,6 +13,7 @@ class CharacterContainer extends Component {
       value: props.value,
       characters: []
     }
+    this.handleDelete = this.handleDelete.bind(this)
   }
 
   componentWillReceiveProps (nextProps) {
@@ -17,32 +21,35 @@ class CharacterContainer extends Component {
       let url = `https://gateway.marvel.com:443/v1/public/characters?name=${nextProps.value}&apikey=${apiKey}`
       fetch(url).then((response) => {
         return response.json()
-      }).then((data) => {
-        const obj = data.data.results[0]
-        console.log(data.data.results[0])
-        const objNew = {}
-        objNew['name'] = obj.name
-        objNew['bio'] = obj.description
-        objNew['imageSrc'] = `${obj.thumbnail.path}.${obj.thumbnail.extension}`
-        objNew['id'] = obj.id
-        console.log(objNew)
-        var newState = this.state.characters
-        newState.unshift(objNew)
-        this.setState({characters: newState})
+      }).then((res) => {
+        console.log('response', res)
+        if (res.data.count === 1) {
+          const obj = characterHelper.createObject(res)
+          let newState = this.state.characters
+          newState.unshift(obj)
+          this.setState({characters: newState})
+        } else {
+          // TODO Need to let the user know no results came back
+        }
       })
     }
+  }
+
+  handleDelete () {
+
   }
 
   render () {
     const { characters } = this.state
     return (
-      <section>
-        {characters.map((character) => {
+      <section className='CharacterContainer'>
+        {characters.map(({imageSrc, name, bio, id}) => {
           return <Character
-            imageSrc={character.imageSrc}
-            name={character.name}
-            bio={character.bio}
-            key={character.id}
+            imageSrc={imageSrc}
+            name={name}
+            bio={bio}
+            key={id}
+            index={id}
           />
         })}
       </section>

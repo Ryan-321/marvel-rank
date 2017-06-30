@@ -7,8 +7,13 @@ class Form extends Component {
     const {handleSubmit, handleChange} = this.props
     return (
       <form className='Form' onSubmit={handleSubmit}>
-        <label>City: </label>
-        <input type='text' name='city_name' onChange={handleChange} />
+        <label className='Form--label'>Enter a character: </label>
+        <input
+          type='text'
+          name='city_name'
+          className='Form--input'
+          onChange={handleChange}
+        />
         <button type='submit' className='Form--btn'>Submit</button>
       </form>
     )

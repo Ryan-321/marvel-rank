@@ -21,16 +21,22 @@ class Main extends Component {
   handleSubmit (e) {
     e.preventDefault()
     this.setState({search: this.state.value})
+
   }
 
   render () {
     const { search } = this.state
     return (
-      <main>
+      <main className='Main'>
+        <section className='Main--section'>
         <Form
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
         />
+        <div>
+
+        </div>
+        </section>
         <CharacterContainer value={search} />
       </main>
     )
