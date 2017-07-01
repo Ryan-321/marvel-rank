@@ -12,7 +12,8 @@ class CharacterContainer extends Component {
     super(props)
     this.state = {
       value: props.value,
-      characters: []
+      characters: [],
+      rank: []
     }
     this.handleDelete = this.handleDelete.bind(this)
   }
@@ -28,7 +29,10 @@ class CharacterContainer extends Component {
           const obj = characterHelper.createObject(res)
           let newState = this.state.characters
           newState.unshift(obj)
-          this.setState({characters: newState, value: ''})
+          const copy = JSON.parse(JSON.stringify(newState)) // TODO dig into why this works
+          const rank = characterHelper.rank(copy)
+          console.log('rank', rank)
+          this.setState({characters: newState, value: '', rank: rank})
         } else {
           // TODO Need to let the user know no results came back
         }
@@ -43,11 +47,11 @@ class CharacterContainer extends Component {
   }
 
   render () {
-    const { characters } = this.state
+    const { characters, rank } = this.state
     return (
       <div className='CharacterContainer'>
         <section className='CharacterContainer--ranks'>
-          <StatsContainer characters={characters} />
+          <StatsContainer rank={rank} />
         </section>
         <section className='CharacterContainer--list'>
           {characters.map(({imageSrc, name, bio, id, wiki}) => {

@@ -8,7 +8,13 @@ const Character = ({name, bio, imageSrc, index, handleDelete, wiki}) => {
       <img src={imageSrc} alt={name} className='Character--img' />
       <h2 className='Character--name'>{name}</h2>
       <p className='Character--bio'><span>Bio:</span> {bio}</p>
-      <a href={wiki} target='_blank' className='Character--link'>learn more</a>
+      <a
+        href={wiki}
+        target='_blank'
+        className='Character--link'
+        rel='noopener noreferrer'>
+          learn more
+        </a>
       <span
         className='Character--delete'
         onClick={() => handleDelete(index)}

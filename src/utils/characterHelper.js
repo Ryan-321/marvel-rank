@@ -13,6 +13,14 @@ const characterHelper = {
     newObj['stories'] = obj.stories.available
     newObj['wiki'] = obj.urls[1].url
     return newObj
+  },
+  rank: (characters) => {
+    const newArr = characters.sort((a, b) => {
+      let sumA = a['comics'] + a['events'] + a['series'] + a['stories']
+      let sumB = b['comics'] + b['events'] + b['series'] + b['stories']
+      return sumB - sumA
+    })
+    return newArr
   }
 }
 
