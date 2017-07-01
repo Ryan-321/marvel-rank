@@ -14,7 +14,7 @@ class Form extends Component {
           className='Form--input'
           onChange={handleChange}
         />
-        <button type='submit' className='Form--btn'>Submit</button>
+        <button type='submit' className='Form--btn'>Find</button>
       </form>
     )
   }

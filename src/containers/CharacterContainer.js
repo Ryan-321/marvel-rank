@@ -37,7 +37,7 @@ class CharacterContainer extends Component {
 
   handleDelete (id) {
     const characters = this.state.characters
-    let newState = characters.filter(character => character.id !== id)
+    const newState = characters.filter(character => character.id !== id)
     this.setState({characters: newState})
   }
 
