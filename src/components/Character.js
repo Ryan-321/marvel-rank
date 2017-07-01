@@ -2,12 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import './Character.css'
 
-const Character = ({name, bio, imageSrc, index, handleDelete}) => {
+const Character = ({name, bio, imageSrc, index, handleDelete, wiki}) => {
   return (
     <div className='Character' id={index}>
       <img src={imageSrc} alt={name} className='Character--img' />
       <h2 className='Character--name'>{name}</h2>
       <p className='Character--bio'><span>Bio:</span> {bio}</p>
+      <a href={wiki} target='_blank' className='Character--link'>learn more</a>
       <span
         className='Character--delete'
         onClick={() => handleDelete(index)}

@@ -1,8 +1,15 @@
 .CharacterContainer {
+  width: 90%;
+  margin: 2em auto;
+}
+
+.CharacterContainer--list {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  width: 90%;
-  margin: 2em auto;
+}
+
+.CharacterContainer--rank {
+
 }

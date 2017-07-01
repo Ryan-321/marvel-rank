@@ -45,3 +45,16 @@
   line-height: 1.5em;
   font-weight: 100;
 }
+
+.Character--link {
+  text-decoration: none;
+  display: block;
+  color: rgba(0,0,0,.5);
+  margin: 0 auto;
+  width: 75px;
+  font-size: small;
+}
+
+.Character--link:hover {
+  text-decoration: underline;
+}

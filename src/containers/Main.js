@@ -21,7 +21,6 @@ class Main extends Component {
   handleSubmit (e) {
     e.preventDefault()
     this.setState({search: this.state.value})
-
   }
 
   render () {
@@ -29,13 +28,10 @@ class Main extends Component {
     return (
       <main className='Main'>
         <section className='Main--section'>
-        <Form
-          handleChange={this.handleChange}
-          handleSubmit={this.handleSubmit}
-        />
-        <div>
-
-        </div>
+          <Form
+            handleChange={this.handleChange}
+            handleSubmit={this.handleSubmit}
+          />
         </section>
         <CharacterContainer value={search} />
       </main>

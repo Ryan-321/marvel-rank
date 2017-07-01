@@ -2,6 +2,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Character from '../components/Character'
+import StatsContainer from './StatsContainer'
 import characterHelper from '../utils/characterHelper'
 import apiKey from '../secret'
 import './CharacterContainer.css'
@@ -27,7 +28,7 @@ class CharacterContainer extends Component {
           const obj = characterHelper.createObject(res)
           let newState = this.state.characters
           newState.unshift(obj)
-          this.setState({characters: newState})
+          this.setState({characters: newState, value: ''})
         } else {
           // TODO Need to let the user know no results came back
         }
@@ -44,18 +45,24 @@ class CharacterContainer extends Component {
   render () {
     const { characters } = this.state
     return (
-      <section className='CharacterContainer'>
-        {characters.map(({imageSrc, name, bio, id}) => {
-          return <Character
-            imageSrc={imageSrc}
-            name={name}
-            bio={bio}
-            key={id}
-            index={id}
-            handleDelete={this.handleDelete}
-          />
-        })}
-      </section>
+      <div className='CharacterContainer'>
+        <section className='CharacterContainer--ranks'>
+          <StatsContainer characters={characters} />
+        </section>
+        <section className='CharacterContainer--list'>
+          {characters.map(({imageSrc, name, bio, id, wiki}) => {
+            return <Character
+              imageSrc={imageSrc}
+              name={name}
+              bio={bio}
+              key={id}
+              index={id}
+              handleDelete={this.handleDelete}
+              wiki={wiki}
+            />
+          })}
+        </section>
+      </div>
     )
   }
 }
