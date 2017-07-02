@@ -31,7 +31,6 @@ class CharacterContainer extends Component {
           newState.unshift(obj)
           const copy = JSON.parse(JSON.stringify(newState)) // TODO dig into why this works
           const rank = characterHelper.rank(copy)
-          console.log('rank', rank)
           this.setState({characters: newState, value: '', rank: rank})
         } else {
           // TODO Need to let the user know no results came back
