@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import Character from '../components/Character'
 import StatsContainer from './StatsContainer'
 import characterHelper from '../utils/characterHelper'
+import { CSSTransitionGroup } from 'react-transition-group'
 import apiKey from '../secret'
 import './CharacterContainer.css'
 
@@ -53,17 +54,24 @@ class CharacterContainer extends Component {
           <StatsContainer rank={rank} />
         </section>
         <section className='CharacterContainer--list'>
-          {characters.map(({imageSrc, name, bio, id, wiki}) => {
-            return <Character
-              imageSrc={imageSrc}
-              name={name}
-              bio={bio}
-              key={id}
-              index={id}
-              handleDelete={this.handleDelete}
-              wiki={wiki}
-            />
-          })}
+          <CSSTransitionGroup
+            className='transitions'
+            transitionName='marvel'
+            transitionEnterTimeout={500}
+            transitionLeaveTimeout={300}
+          >
+            {characters.map(({imageSrc, name, bio, id, wiki}) => {
+              return <Character
+                imageSrc={imageSrc}
+                name={name}
+                bio={bio}
+                key={id}
+                index={id}
+                handleDelete={this.handleDelete}
+                wiki={wiki}
+              />
+            })}
+          </CSSTransitionGroup>
         </section>
       </div>
     )

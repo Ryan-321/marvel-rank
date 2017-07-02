@@ -1,19 +1,8 @@
 .Header {
-  text-align: center;
-  background-color: #f0141e;
+  height: 100px;
+  background-image: url('../images/banner.jpg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
   box-shadow: 0 0 5px rgba(0,0,0,.7),
               2px 2px 2px rgba(0,0,0,.3);
-  padding: 1em;
-}
-
-.Header--h1{
-  padding: 0;
-  margin: 0 auto;
-  font-family: 'Roboto', sans-serif;
-  border: 1px solid #fff;
-  width: 19%;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: -4px;
-  font-size: 3em;
 }

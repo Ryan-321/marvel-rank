@@ -4,12 +4,34 @@
 }
 
 .CharacterContainer--list {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
+
 }
 
 .CharacterContainer--rank {
 
+}
+
+.transitions {
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+justify-content: center;
+}
+
+.marvel-enter {
+  opacity: 0.01;
+}
+
+.marvel-enter.marvel-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.marvel-leave {
+  opacity: 1;
+}
+
+.marvel-leave.marvel-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
 }

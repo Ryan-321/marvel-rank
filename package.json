@@ -6,7 +6,8 @@
     "axios": "^0.16.2",
     "d3": "^4.9.1",
     "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "react-dom": "^15.6.1",
+    "react-transition-group": "1.x"
   },
   "devDependencies": {
     "react-scripts": "1.0.7"
