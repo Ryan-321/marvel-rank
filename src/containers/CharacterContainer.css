@@ -7,31 +7,29 @@
 
 }
 
-.CharacterContainer--rank {
-
+.CharacterContainer-transitions {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.transitions {
-display: flex;
-flex-direction: row;
-flex-wrap: wrap;
-justify-content: center;
-}
-
-.marvel-enter {
+.transition-cards-enter {
   opacity: 0.01;
+  left: 50px;
 }
 
-.marvel-enter.marvel-enter-active {
+.transition-cards-enter.transition-cards-enter-active {
   opacity: 1;
-  transition: opacity 500ms ease-in;
+  left: 0;
+  transition: opacity 700ms ease-in, left 700ms;
 }
 
-.marvel-leave {
+.transition-cards-leave {
   opacity: 1;
 }
 
-.marvel-leave.marvel-leave-active {
+.transition-cards-leave.transition-cards-leave-active {
   opacity: 0.01;
   transition: opacity 300ms ease-in;
 }

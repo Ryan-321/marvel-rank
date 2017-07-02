@@ -27,12 +27,12 @@ class CharacterContainer extends Component {
       }).then((res) => {
         console.log('response', res)
         if (res.data.count === 1) {
-          const obj = characterHelper.createObject(res)
-          let newState = this.state.characters
-          newState.unshift(obj)
-          const copy = JSON.parse(JSON.stringify(newState)) // TODO dig into why this works
+          const newCharacter = characterHelper.createObject(res)
+          let state = this.state.characters
+          state.unshift(newCharacter)
+          const copy = JSON.parse(JSON.stringify(state)) // TODO investigate
           const rank = characterHelper.rank(copy)
-          this.setState({characters: newState, value: '', rank: rank})
+          this.setState({characters: state, value: '', rank: rank})
         } else {
           // TODO Need to let the user know no results came back
         }
@@ -41,9 +41,11 @@ class CharacterContainer extends Component {
   }
 
   handleDelete (id) {
-    const characters = this.state.characters
-    const newState = characters.filter(character => character.id !== id)
-    this.setState({characters: newState})
+    const oldState = this.state.characters
+    const newState = oldState.filter(character => character.id !== id)
+    const copy = JSON.parse(JSON.stringify(newState))
+    const rank = characterHelper.rank(copy)
+    this.setState({characters: newState, rank: rank})
   }
 
   render () {
@@ -55,8 +57,8 @@ class CharacterContainer extends Component {
         </section>
         <section className='CharacterContainer--list'>
           <CSSTransitionGroup
-            className='transitions'
-            transitionName='marvel'
+            className='CharacterContainer-transitions'
+            transitionName='transition-cards'
             transitionEnterTimeout={500}
             transitionLeaveTimeout={300}
           >
