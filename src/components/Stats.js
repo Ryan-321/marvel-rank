@@ -8,22 +8,28 @@ class Stats extends Component {
     this.createChart = this.createChart.bind(this)
   }
 
-  componentDidMount () {
-    this.createChart()
-  }
-
   componentDidUpdate () {
     this.createChart()
   }
 
   createChart () {
-    const data = this.props.data || []
+    const margin = {top: 20, right: 20, bottom: 20, left: 20}
+    const width = 700 - margin.left - margin.right
+    const height = 200 - margin.top - margin.bottom
+
+    const data = this.props.data
     const node = this.node
     console.log('node', node)
+
+    const x = d3.scaleLinear().range([0, width])
+    const y = d3.scaleBand().range([height, 0])
+    const barHeight = 25
+    const xAxis = d3.axisTop(x).ticks(10, '%')
+    const yAxis = d3.axisLeft(y)
+
     const dataMax = d3.max(data)
-    const yScale = d3.scaleLinear()
-      .domain([0, dataMax])
-      .range([0, 500])
+    x.domain([0, dataMax])
+    y.domain(['Comics', 'Events', 'Stories', 'Series']).padding(0.1)
 
     d3.select(node)
       .selectAll('rect')
@@ -41,10 +47,10 @@ class Stats extends Component {
       .selectAll('rect')
       .data(data)
       .style('fill', 'magenta')
-      .attr('y', (d, i) => i * 25)
-      .attr('x', d => 500 - yScale(d))
-      .attr('height', 25)
-      .attr('width', d => yScale(d))
+      .attr('x', 0)
+      .attr('y', (d, i) => barHeight * i)
+      .attr('height', barHeight)
+      .attr('width', d => x(d))
   }
 
   render () {
@@ -61,5 +67,5 @@ class Stats extends Component {
 export default Stats
 
 Stats.propTypes = {
-
+  stats: PropTypes.arrayOf(PropTypes.number)
 }
