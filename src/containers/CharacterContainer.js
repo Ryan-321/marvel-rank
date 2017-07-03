@@ -25,9 +25,10 @@ class CharacterContainer extends Component {
       fetch(url).then((response) => {
         return response.json()
       }).then((res) => {
-        console.log('response', res)
+        // console.log('response', res)
         if (res.data.count === 1) {
           const newCharacter = characterHelper.createObject(res)
+          console.log('newCharacter', newCharacter)
           let state = this.state.characters
           state.unshift(newCharacter)
           const copy = JSON.parse(JSON.stringify(state)) // TODO investigate

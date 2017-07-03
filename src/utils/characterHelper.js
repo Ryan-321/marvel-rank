@@ -21,6 +21,12 @@ const characterHelper = {
       return sumB - sumA
     })
     return newArr
+  },
+  getStats: (character) => {
+    const stats = []
+    const keys = ['comics', 'events', 'stories', 'series']
+    keys.forEach(key => stats.push(character[key]))
+    return stats
   }
 }
 

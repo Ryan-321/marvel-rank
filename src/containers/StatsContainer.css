@@ -1,3 +1,20 @@
+.StatsContainer-rank ol {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: start;
+}
+
+.StatsContainer--li {
+  margin-left: 25px;
+  cursor: pointer;
+  position: relative;
+}
+
+.StatsContainer--li:hover {
+  top: -3px;
+}
+
 .StatsContainer--li > p > img {
   width: 20px;
 }
