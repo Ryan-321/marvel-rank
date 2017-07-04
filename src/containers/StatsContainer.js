@@ -47,20 +47,23 @@ class StatsContainer extends Component {
     const { stats } = this.state
     return (
       <div className='StatsContainer'>
-        <div className='StatsContainer-rank'> {/* NOTE make inline */}
-          <ol>
+        <div className='StatsContainer-rank'>
+          <h3>Ranking</h3>
+          <ul>
             {rank.map(({imageSrc, name, id}) => {
               return <li
                 className='StatsContainer--li'
                 key={id}
                 onClick={() => this.handleClick(id)}
               >
-                <p><img src={imageSrc} alt={name} /> {name}</p>
+                <img src={imageSrc} alt={name} />
+                <p>{name}</p>
               </li>
             })}
-          </ol>
+          </ul>
         </div>
         <div className='StatsContainer-stats'>
+          <h3>{this.state.selected.name}</h3>
           <Stats data={stats} />
         </div>
       </div>
