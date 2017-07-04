@@ -14,6 +14,25 @@ class StatsContainer extends Component {
     this.handleClick = this.handleClick.bind(this)
   }
 
+  componentDidMount () {
+    const selected = this.props.selected
+    const stats = characterHelper.getStats(selected)
+    console.log('stats', stats)
+    this.setState({selected, stats})
+  }
+
+  componentWillReceiveProps (nextProps) {
+    console.log(nextProps)
+    console.log(this.props)
+    if (this.props.selected !== nextProps.selected) {
+      const selected = nextProps.selected
+      const stats = characterHelper.getStats(selected)
+      console.log('stats', stats)
+      console.log('selected', selected)
+      this.setState({selected, stats})
+    }
+  }
+
   handleClick (id) {
     const { rank } = this.props
     const index = rank.map(r => r.id).indexOf(id)
@@ -25,6 +44,7 @@ class StatsContainer extends Component {
 
   render () {
     const { rank } = this.props
+    const { stats } = this.state
     return (
       <div className='StatsContainer'>
         <div className='StatsContainer-rank'> {/* NOTE make inline */}
@@ -41,7 +61,7 @@ class StatsContainer extends Component {
           </ol>
         </div>
         <div className='StatsContainer-stats'>
-          <Stats data={this.state.stats} />
+          <Stats data={stats} />
         </div>
       </div>
     )

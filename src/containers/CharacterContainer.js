@@ -14,7 +14,8 @@ class CharacterContainer extends Component {
     this.state = {
       value: props.value,
       characters: [],
-      rank: []
+      rank: [],
+      selected: {}
     }
     this.handleDelete = this.handleDelete.bind(this)
   }
@@ -33,7 +34,12 @@ class CharacterContainer extends Component {
           state.unshift(newCharacter)
           const copy = JSON.parse(JSON.stringify(state)) // TODO investigate
           const rank = characterHelper.rank(copy)
-          this.setState({characters: state, value: '', rank: rank})
+          this.setState({
+            characters: state,
+            value: '',
+            rank: rank,
+            selected: newCharacter
+          })
         } else {
           // TODO Need to let the user know no results came back
         }
@@ -50,11 +56,11 @@ class CharacterContainer extends Component {
   }
 
   render () {
-    const { characters, rank } = this.state
+    const { characters, rank, selected } = this.state
     return (
       <div className='CharacterContainer'>
         <section className='CharacterContainer--ranks'>
-          <StatsContainer rank={rank} />
+          {rank.length > 0 && <StatsContainer rank={rank} selected={selected} />}
         </section>
         <section className='CharacterContainer--list'>
           <CSSTransitionGroup

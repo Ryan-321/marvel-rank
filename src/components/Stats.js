@@ -14,7 +14,7 @@ class Stats extends Component {
 
   createChart () {
     const margin = {top: 20, right: 20, bottom: 50, left: 100}
-    const width = 700 - margin.left - margin.right
+    const width = 900 - margin.left - margin.right
     const height = 200 - margin.top - margin.bottom
 
     const data = this.props.data
@@ -30,6 +30,9 @@ class Stats extends Component {
       .domain(['Series', 'Stories', 'Events', 'Comics'])
       .range([height, 0])
 
+    const t = d3.transition()
+      .duration(1000)
+
     d3.select(node)
       .selectAll('rect')
       .data(data)
@@ -40,6 +43,7 @@ class Stats extends Component {
       .selectAll('rect')
       .data(data)
       .exit()
+      .transition(t)
       .remove()
 
     d3.select(node)
@@ -51,12 +55,13 @@ class Stats extends Component {
     d3.select(node)
       .selectAll('rect')
       .data(data)
-      .style('fill', 'magenta')
+      .style('fill', 'rgba(0,0,0,.5)')
+      .transition(t)
       .attr('x', margin.left)
       .attr('y', (d, i) => yScale.bandwidth() * i)
       .attr('height', yScale.bandwidth())
       .attr('width', d => xScale(d))
-      .attr('stroke', 'mediumseagreen')
+      .attr('stroke', 'black')
 
     let yAxis = d3.axisLeft()
       .scale(yScale)
@@ -73,12 +78,11 @@ class Stats extends Component {
       .append('g')
       .attr('transform', 'translate(' + margin.left + ',' + height + ')')
       .call(xAxis)
-
   }
 
   render () {
     return (
-      <svg width={700} height={200} ref='chart' />
+      <svg width={900} height={200} ref='chart' />
     )
   }
 }
