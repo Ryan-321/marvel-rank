@@ -1,10 +1,7 @@
-.CharacterContainer {
-  width: 90%;
-  margin: 1em auto;
-}
 
 .CharacterContainer--list {
-
+  width: 90%;
+  margin: 1em auto;
 }
 
 .CharacterContainer-transitions {

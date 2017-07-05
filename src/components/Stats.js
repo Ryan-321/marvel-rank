@@ -55,7 +55,7 @@ class Stats extends Component {
     d3.select(node)
       .selectAll('rect')
       .data(data)
-      .style('fill', 'rgba(0,0,0,.5)')
+      .style('fill', 'rgba(33, 33, 33,.5)')
       .transition(t)
       .attr('x', margin.left)
       .attr('y', (d, i) => yScale.bandwidth() * i)
