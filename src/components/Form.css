@@ -12,7 +12,6 @@
 
 .Form--input {
   box-shadow: 1px 1px 1px rgba(0,0,0,.1);
-  vertical-align: middle;
   background: whitesmoke;
   font-size: 1.1em;
   border: 1px inset rgba(0,0,0,.3);
@@ -22,13 +21,18 @@
 
 .Form--btn {
   box-shadow: 1px 1px 1px rgba(0,0,0,.2);
-  vertical-align: middle;
   border: none;
-  color: #fff;
+  color: whitesmoke;
   margin-left: 1.5em;
   padding: .5em 1.5em;
   font-size: 1.25em;
   background: #212121;
   transform: skewX(-10deg);
   cursor: pointer;
+}
+
+.Form--input,
+.Form--btn {
+  vertical-align: middle;
+  outline: none;
 }

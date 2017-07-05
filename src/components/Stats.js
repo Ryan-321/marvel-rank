@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import * as d3 from 'd3'  // destructor
+import * as d3 from 'd3'  // add destructor
+import './Stats.css'
 
 class Stats extends Component {
   constructor (props) {
@@ -13,7 +14,7 @@ class Stats extends Component {
   }
 
   createChart () {
-    const margin = {top: 20, right: 20, bottom: 10, left: 50}
+    const margin = {top: 20, right: 20, bottom: 10, left: 75}
     const width = 900 - margin.left - margin.right
     const height = 200 - margin.top - margin.bottom
 
@@ -55,7 +56,7 @@ class Stats extends Component {
     d3.select(node)
       .selectAll('rect')
       .data(data)
-      .style('fill', 'rgba(33, 33, 33,.5)')
+      .style('fill', 'rgba(181,15,22,.8)')
       .transition(t)
       .attr('x', margin.left)
       .attr('y', (d, i) => yScale.bandwidth() * i)
@@ -68,7 +69,8 @@ class Stats extends Component {
 
     d3.select(node)
       .append('g')
-      .attr('transform', 'translate(50, 0)')
+      .attr('transform', 'translate(' + margin.left + ', 0)')
+      .attr('class', 'Stats--axis')
       .call(yAxis)
 
     let xAxis = d3.axisBottom()
@@ -77,6 +79,7 @@ class Stats extends Component {
     d3.select(node)
       .append('g')
       .attr('transform', 'translate(' + margin.left + ',' + height + ')')
+      .attr('class', 'Stats--axis')
       .call(xAxis)
   }
 
