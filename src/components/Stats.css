@@ -1,10 +1,25 @@
 .Stats--axis path,
 .Stats--axis line {
   stroke: whitesmoke;
+  shape-rendering: crispEdges;
 }
 
 .Stats--axis text {
   stroke: whitesmoke;
   font-size: 1.4em;
   letter-spacing: 1px;
+}
+
+.Stats--tooltip {
+  position: absolute;
+  text-align: center;
+  width: 60px;
+  height: 28px;
+  padding: 2px;
+  font-size: 12px;
+  font-family: 'Montserrat', sans-serif;
+  background: #212121;
+  color: whitesmoke;
+  border: 0;
+  pointer-events: none;
 }

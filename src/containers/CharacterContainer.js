@@ -40,8 +40,6 @@ class CharacterContainer extends Component {
             rank: rank,
             selected: newCharacter
           })
-        } else {
-          // TODO Need to let the user know no results came back
         }
       })
     }

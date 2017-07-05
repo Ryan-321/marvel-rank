@@ -59,10 +59,10 @@ class Stats extends Component {
       .style('fill', 'rgba(181,15,22,.8)')
       .transition(t)
       .attr('x', margin.left)
-      .attr('y', (d, i) => yScale.bandwidth() * i)
-      .attr('height', yScale.bandwidth())
+      .attr('y', (d, i) => (yScale.bandwidth() * i) + 5)
+      .attr('height', yScale.bandwidth() - 10)
       .attr('width', d => xScale(d))
-      .attr('stroke', 'black')
+      .attr('stroke', '#212121')
 
     let yAxis = d3.axisLeft()
       .scale(yScale)
