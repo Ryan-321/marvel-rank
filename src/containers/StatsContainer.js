@@ -48,7 +48,7 @@ class StatsContainer extends Component {
     return (
       <div className='StatsContainer'>
         <div className='StatsContainer-rank'>
-          <h3>Ranking</h3>
+          <h3 className='StatsContainer--h3'>Ranking</h3>
           <ul>
             {rank.map(({imageSrc, name, id}) => {
               return <li
@@ -63,7 +63,7 @@ class StatsContainer extends Component {
           </ul>
         </div>
         <div className='StatsContainer-stats'>
-          <h3>{this.state.selected.name}</h3>
+          <h3 className='StatsContainer--h3'>{this.state.selected.name}</h3>
           <Stats data={stats} />
         </div>
       </div>
