@@ -27,8 +27,6 @@ class StatsContainer extends Component {
     if (this.props.selected !== nextProps.selected) {
       const selected = nextProps.selected
       const stats = characterHelper.getStats(selected)
-      console.log('stats', stats)
-      console.log('selected', selected)
       this.setState({selected, stats})
     }
   }
@@ -38,7 +36,6 @@ class StatsContainer extends Component {
     const index = rank.map(r => r.id).indexOf(id)
     const selected = rank[index]
     const stats = characterHelper.getStats(selected)
-    console.log('stats', stats)
     this.setState({selected, stats})
   }
 

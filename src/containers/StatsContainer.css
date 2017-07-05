@@ -20,6 +20,10 @@
   z-index: -1;
 }
 
+.StatsContainer svg {
+  padding: 1em;
+}
+
  .StatsContainer--h3 {
   font-family: 'Montserrat', sans-serif;
   letter-spacing: 1px;
@@ -30,6 +34,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: start;
+  padding: .75em;
 }
 
 .StatsContainer--li {
