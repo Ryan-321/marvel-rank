@@ -71,5 +71,6 @@ class StatsContainer extends Component {
 export default StatsContainer
 
 StatsContainer.propTypes = {
-  rank: PropTypes.arrayOf(PropTypes.objects)
+  rank: PropTypes.arrayOf(PropTypes.object),
+  selected: PropTypes.object
 }
