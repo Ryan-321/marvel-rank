@@ -6,42 +6,42 @@ import './StatsContainer.css'
 
 class StatsContainer extends Component {
   constructor (props) {
-    super(props)
+    super(props);
     this.state = {
       selected: {},
       stats: []
-    }
+    };
     this.handleClick = this.handleClick.bind(this)
   }
 
   componentDidMount () {
-    const selected = this.props.selected
-    const stats = characterHelper.getStats(selected)
-    console.log('stats', stats)
+    const selected = this.props.selected;
+    const stats = characterHelper.getStats(selected);
+    console.log('stats', stats);
     this.setState({selected, stats})
   }
 
   componentWillReceiveProps (nextProps) {
-    console.log(nextProps)
-    console.log(this.props)
+    console.log(nextProps);
+    console.log(this.props);
     if (this.props.selected !== nextProps.selected) {
-      const selected = nextProps.selected
-      const stats = characterHelper.getStats(selected)
+      const selected = nextProps.selected;
+      const stats = characterHelper.getStats(selected);
       this.setState({selected, stats})
     }
   }
 
   handleClick (id) {
-    const { rank } = this.props
-    const index = rank.map(r => r.id).indexOf(id)
-    const selected = rank[index]
-    const stats = characterHelper.getStats(selected)
+    const { rank } = this.props;
+    const index = rank.map(r => r.id).indexOf(id);
+    const selected = rank[index];
+    const stats = characterHelper.getStats(selected);
     this.setState({selected, stats})
   }
 
   render () {
-    const { rank } = this.props
-    const { stats } = this.state
+    const { rank } = this.props;
+    const { stats } = this.state;
     return (
       <div className='StatsContainer'>
         <div className='StatsContainer-rank'>
@@ -73,4 +73,4 @@ export default StatsContainer
 StatsContainer.propTypes = {
   rank: PropTypes.arrayOf(PropTypes.object),
   selected: PropTypes.object
-}
+};

@@ -5,13 +5,13 @@ import './Main.css'
 
 class Main extends Component {
   constructor (props) {
-    super(props)
+    super(props);
 
     this.state = {
       value: '',
       search: ''
-    }
-    this.handleChange = this.handleChange.bind(this)
+    };
+    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
@@ -20,12 +20,12 @@ class Main extends Component {
   }
 
   handleSubmit (e) {
-    e.preventDefault()
+    e.preventDefault();
     this.setState({search: this.state.value})
   }
 
   render () {
-    const { search } = this.state
+    const { search } = this.state;
     return (
       <main className='Main'>
         <section className='Main--section'>

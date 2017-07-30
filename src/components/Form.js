@@ -15,11 +15,11 @@ const Form = ({handleSubmit, handleChange}) => {
       <button type='submit' className='Form--btn'>Find</button>
     </form>
   )
-}
+};
 
 export default Form
 
 Form.propTypes = {
   handleChange: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired
-}
+};
