@@ -10,29 +10,29 @@ import './CharacterContainer.css'
 
 class CharacterContainer extends Component {
   constructor (props) {
-    super(props)
+    super(props);
     this.state = {
       value: props.value,
       characters: [],
       rank: [],
       selected: {}
-    }
+    };
     this.handleDelete = this.handleDelete.bind(this)
   }
 
   componentWillReceiveProps (nextProps) {
     if (nextProps.value !== this.props.value) {
-      let url = `https://gateway.marvel.com:443/v1/public/characters?name=${nextProps.value}&apikey=${apiKey}`
+      let url = `https://gateway.marvel.com:443/v1/public/characters?name=${nextProps.value}&apikey=${apiKey}`;
       fetch(url).then((response) => {
         return response.json()
       }).then((res) => {
         if (res.data.count === 1) {
-          const newCharacter = characterHelper.createObject(res)
-          console.log('newCharacter', newCharacter)
-          let state = this.state.characters
-          state.unshift(newCharacter)
-          const copy = JSON.parse(JSON.stringify(state)) // laundering the state
-          const rank = characterHelper.rank(copy)
+          const newCharacter = characterHelper.createObject(res);
+          console.log('newCharacter', newCharacter);
+          let state = this.state.characters;
+          state.unshift(newCharacter);
+          const copy = JSON.parse(JSON.stringify(state)); // laundering the state
+          const rank = characterHelper.rank(copy);
           this.setState({
             characters: state,
             value: '',
@@ -45,15 +45,15 @@ class CharacterContainer extends Component {
   }
 
   handleDelete (id) {
-    const oldState = this.state.characters
-    const newState = oldState.filter(character => character.id !== id)
-    const copy = JSON.parse(JSON.stringify(newState))
-    const rank = characterHelper.rank(copy)
+    const oldState = this.state.characters;
+    const newState = oldState.filter(character => character.id !== id);
+    const copy = JSON.parse(JSON.stringify(newState));
+    const rank = characterHelper.rank(copy);
     this.setState({characters: newState, rank: rank})
   }
 
   render () {
-    const { characters, rank, selected } = this.state
+    const { characters, rank, selected } = this.state;
     return (
       <div className='CharacterContainer'>
         <section className='CharacterContainer--ranks'>
@@ -88,4 +88,4 @@ export default CharacterContainer
 
 CharacterContainer.propTypes = {
   value: PropTypes.string.isRequired
-}
+};
