@@ -6,15 +6,27 @@ const DEFAULT_STATE = {
   selected: {}
 }
 
-const updateCharacter = (state, payload) => {
-  let characters = state.characters.slice();
-  characters.unshift(payload);
-  const charRank = rank(characters);
+const updateCharacter = (state, character) => {
+  const characters = state.characters.slice();
+  characters.unshift(character);
+  const characterRank = rank(characters);
 
   return {
     characters,
+    rank: characterRank,
+    selected: character,
+  }
+}
+
+const deleteCharacter = (state, id) => {
+  const copy = state.characters.slice();
+  const characters = copy.filter((c) => c.id !== id);
+  const charRank = rank(characters);
+
+  return {
+    ...state,
+    characters,
     rank: charRank,
-    selected: payload,
   }
 }
 
@@ -23,6 +35,8 @@ const characterReducer = (state = DEFAULT_STATE, action) => {
   switch (action.type) {
     case 'GET_CHARACTER':
       return updateCharacter(state, payload);
+    case 'DELETE_CHARACTER':
+      return deleteCharacter(state, payload);
     default:
       return state
   }

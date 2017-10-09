@@ -6,38 +6,18 @@ import { createObject } from './../utils/characterHelper'
 import { CSSTransitionGroup } from 'react-transition-group'
 import Character from '../components/Character'
 import StatsContainer from './StatsContainer'
-import { rank } from '../utils/characterHelper'
-import { getCharacter, setSearchTerm, setValue } from '../actionCreators'
+import { getCharacter, deleteCharacter } from '../actionCreators'
 import './CharacterContainer.css'
 
 class CharacterContainer extends Component {
-  constructor (props) {
-    super(props);
-    this.state = {
-      characters: [],
-      rank: [],
-      selected: {}
-    };
-    this.handleDelete = this.handleDelete.bind(this)
-  }
-
   componentWillReceiveProps (nextProps) {
     if (nextProps.value !== this.props.value) {
       this.props.callMarvel(nextProps.value)
     }
   }
 
-  handleDelete (id) {
-    // todo need to move this into redux
-    const oldState = this.state.characters;
-    const newState = oldState.filter(character => character.id !== id);
-    const copy = JSON.parse(JSON.stringify(newState));
-    const rank = rank(copy);
-    this.setState({characters: newState, rank: rank})
-  }
-
   render () {
-    const { characters, rank, selected } = this.props;
+    const { characters, rank, selected, handleDelete } = this.props;
     return (
       <div className='CharacterContainer'>
         <section className='CharacterContainer--ranks'>
@@ -57,7 +37,7 @@ class CharacterContainer extends Component {
                 bio={bio}
                 key={id}
                 index={id}
-                handleDelete={this.handleDelete}
+                handleDelete={handleDelete}
                 wiki={wiki}
               />
             })}
@@ -77,6 +57,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
+  //  todo this is messy, move somewhere else, use redux saga???
   callMarvel: (value) => {
     let url =
       `https://gateway.marvel.com:443/v1/public/characters?name=${value}&apikey=${apiKey}`;
@@ -93,10 +74,11 @@ const mapDispatchToProps = (dispatch) => ({
     }).catch((error) => {
       console.log(`ERROR: ${error.message}`)
     })
+  },
+  handleDelete: (id) => {
+    dispatch(deleteCharacter(id))
   }
 })
-
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(CharacterContainer)
 

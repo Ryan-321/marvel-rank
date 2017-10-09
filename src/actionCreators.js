@@ -10,5 +10,10 @@ export const setValue = (value) => ({
 
 export const getCharacter = (value) => ({
   type: 'GET_CHARACTER',
-  payload: value
+  payload: value,
+})
+
+export const deleteCharacter = (id) => ({
+  type: 'DELETE_CHARACTER',
+  payload: id,
 })
