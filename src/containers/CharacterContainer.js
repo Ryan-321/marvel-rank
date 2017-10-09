@@ -1,18 +1,17 @@
-/* global fetch */
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { CSSTransitionGroup } from 'react-transition-group'
 import Character from '../components/Character'
 import StatsContainer from './StatsContainer'
-import characterHelper from '../utils/characterHelper'
-import { CSSTransitionGroup } from 'react-transition-group'
-import apiKey from '../secret'
+import { rank } from '../utils/characterHelper'
+import { callMarvel, setSearchTerm, setValue } from '../actionCreators'
 import './CharacterContainer.css'
 
 class CharacterContainer extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      value: props.value,
       characters: [],
       rank: [],
       selected: {}
@@ -22,25 +21,8 @@ class CharacterContainer extends Component {
 
   componentWillReceiveProps (nextProps) {
     if (nextProps.value !== this.props.value) {
-      let url = `https://gateway.marvel.com:443/v1/public/characters?name=${nextProps.value}&apikey=${apiKey}`;
-      fetch(url).then((response) => {
-        return response.json()
-      }).then((res) => {
-        if (res.data.count === 1) {
-          const newCharacter = characterHelper.createObject(res);
-          console.log('newCharacter', newCharacter);
-          let state = this.state.characters;
-          state.unshift(newCharacter);
-          const copy = JSON.parse(JSON.stringify(state)); // laundering the state
-          const rank = characterHelper.rank(copy);
-          this.setState({
-            characters: state,
-            value: '',
-            rank: rank,
-            selected: newCharacter
-          })
-        }
-      })
+      console.log('newValue', nextProps.value)
+      callMarvel(nextProps.value)
     }
   }
 
@@ -48,7 +30,7 @@ class CharacterContainer extends Component {
     const oldState = this.state.characters;
     const newState = oldState.filter(character => character.id !== id);
     const copy = JSON.parse(JSON.stringify(newState));
-    const rank = characterHelper.rank(copy);
+    const rank = rank(copy);
     this.setState({characters: newState, rank: rank})
   }
 
@@ -84,8 +66,27 @@ class CharacterContainer extends Component {
   }
 }
 
-export default CharacterContainer
+const mapStateToProps = (state) => ({
+  value: state.mainReducer.searchTerm,
+  data: state.data
+})
+
+const mapDispatchToProps = (dispatch) => ({
+
+  handleChange: (e) => {
+    dispatch(setValue(e.target.value))
+  },
+  handleSubmit: (e) => {
+    e.preventDefault();
+    dispatch(setSearchTerm())
+  }
+})
+
+
+
+export default connect(mapStateToProps)(CharacterContainer)
 
 CharacterContainer.propTypes = {
   value: PropTypes.string.isRequired
 };
+

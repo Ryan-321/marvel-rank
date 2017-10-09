@@ -1,43 +1,43 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import Form from '../components/Form'
 import CharacterContainer from './CharacterContainer'
+import { setSearchTerm, setValue } from '../actionCreators'
+
 import './Main.css'
 
 class Main extends Component {
-  constructor (props) {
-    super(props);
-
-    this.state = {
-      value: '',
-      search: ''
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this)
-  }
-
-  handleChange (e) {
-    this.setState({value: e.target.value})
-  }
-
-  handleSubmit (e) {
-    e.preventDefault();
-    this.setState({search: this.state.value})
-  }
-
   render () {
-    const { search } = this.state;
+    const { searchTerm, handleSubmit, handleChange, value } = this.props;
     return (
       <main className='Main'>
         <section className='Main--section'>
           <Form
-            handleChange={this.handleChange}
-            handleSubmit={this.handleSubmit}
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+            value={value}
           />
         </section>
-        <CharacterContainer value={search} />
+        <CharacterContainer value={searchTerm} />
       </main>
     )
   }
 }
 
-export default Main
+const mapStateToProps = (state) => ({
+  searchTerm: state.mainReducer.searchTerm,
+  value: state.mainReducer.value,
+})
+
+const mapDispatchToProps = (dispatch) => ({
+
+  handleChange: (e) => {
+    dispatch(setValue(e.target.value))
+  },
+  handleSubmit: (e) => {
+    e.preventDefault();
+    dispatch(setSearchTerm())
+  }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main)

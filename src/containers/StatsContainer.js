@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Stats from '../components/Stats'
-import characterHelper from '../utils/characterHelper'
+import { getStats } from '../utils/characterHelper'
 import './StatsContainer.css'
 
 class StatsContainer extends Component {
@@ -16,7 +16,7 @@ class StatsContainer extends Component {
 
   componentDidMount () {
     const selected = this.props.selected;
-    const stats = characterHelper.getStats(selected);
+    const stats = getStats(selected);
     console.log('stats', stats);
     this.setState({selected, stats})
   }
@@ -26,7 +26,7 @@ class StatsContainer extends Component {
     console.log(this.props);
     if (this.props.selected !== nextProps.selected) {
       const selected = nextProps.selected;
-      const stats = characterHelper.getStats(selected);
+      const stats = getStats(selected);
       this.setState({selected, stats})
     }
   }
@@ -35,7 +35,7 @@ class StatsContainer extends Component {
     const { rank } = this.props;
     const index = rank.map(r => r.id).indexOf(id);
     const selected = rank[index];
-    const stats = characterHelper.getStats(selected);
+    const stats = getStats(selected);
     this.setState({selected, stats})
   }
 
