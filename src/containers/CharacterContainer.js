@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import apiKey from './../secret'
+import { createObject } from './../utils/characterHelper'
 import { CSSTransitionGroup } from 'react-transition-group'
 import Character from '../components/Character'
 import StatsContainer from './StatsContainer'
 import { rank } from '../utils/characterHelper'
-import { callMarvel, setSearchTerm, setValue } from '../actionCreators'
+import { getCharacter, setSearchTerm, setValue } from '../actionCreators'
 import './CharacterContainer.css'
 
 class CharacterContainer extends Component {
@@ -21,12 +23,12 @@ class CharacterContainer extends Component {
 
   componentWillReceiveProps (nextProps) {
     if (nextProps.value !== this.props.value) {
-      console.log('newValue', nextProps.value)
-      callMarvel(nextProps.value)
+      this.props.callMarvel(nextProps.value)
     }
   }
 
   handleDelete (id) {
+    // todo need to move this into redux
     const oldState = this.state.characters;
     const newState = oldState.filter(character => character.id !== id);
     const copy = JSON.parse(JSON.stringify(newState));
@@ -35,7 +37,7 @@ class CharacterContainer extends Component {
   }
 
   render () {
-    const { characters, rank, selected } = this.state;
+    const { characters, rank, selected } = this.props;
     return (
       <div className='CharacterContainer'>
         <section className='CharacterContainer--ranks'>
@@ -68,23 +70,35 @@ class CharacterContainer extends Component {
 
 const mapStateToProps = (state) => ({
   value: state.mainReducer.searchTerm,
-  data: state.data
+  characters: state.characterReducer.characters,
+  rank: state.characterReducer.rank,
+  selected: state.characterReducer.selected,
+
 })
 
 const mapDispatchToProps = (dispatch) => ({
-
-  handleChange: (e) => {
-    dispatch(setValue(e.target.value))
-  },
-  handleSubmit: (e) => {
-    e.preventDefault();
-    dispatch(setSearchTerm())
+  callMarvel: (value) => {
+    let url =
+      `https://gateway.marvel.com:443/v1/public/characters?name=${value}&apikey=${apiKey}`;
+    fetch(url).then((response) => {
+      if(response.ok) {
+        return response.json();
+      }
+      throw new Error('Network response was not ok.');
+    }).then((res) => {
+      if (res.data) {
+        const character = createObject(res);
+        dispatch(getCharacter(character));
+      }
+    }).catch((error) => {
+      console.log(`ERROR: ${error.message}`)
+    })
   }
 })
 
 
 
-export default connect(mapStateToProps)(CharacterContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(CharacterContainer)
 
 CharacterContainer.propTypes = {
   value: PropTypes.string.isRequired

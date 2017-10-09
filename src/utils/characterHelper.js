@@ -22,6 +22,7 @@ export const rank = (characters) => {
   });
   return newArr
 }
+
 export const getStats = (character) => {
   const stats = [];
   const keys = ['comics', 'events', 'stories', 'series'];
