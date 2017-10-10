@@ -1,45 +1,23 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import Stats from '../../components/Stats/Stats'
-import { getStats } from '../../utils/characterHelper'
+import { getStats } from '../../actionCreators'
 import './StatsContainer.css'
 
 class StatsContainer extends Component {
-  constructor (props) {
-    super(props);
-    this.state = {
-      selected: {},
-      stats: []
-    };
-    this.handleClick = this.handleClick.bind(this)
-  }
-
   componentDidMount () {
-    const selected = this.props.selected;
-    const stats = getStats(selected);
-    console.log('stats', stats);
-    this.setState({selected, stats})
+    this.props.loadStats(this.props.selected);
   }
 
   componentWillReceiveProps (nextProps) {
     if (this.props.selected !== nextProps.selected) {
-      const selected = nextProps.selected;
-      const stats = getStats(selected);
-      this.setState({selected, stats})
+      this.props.loadStats(nextProps.selected);
     }
   }
 
-  handleClick (id) {
-    const { rank } = this.props;
-    const index = rank.map(r => r.id).indexOf(id);
-    const selected = rank[index];
-    const stats = getStats(selected);
-    this.setState({selected, stats})
-  }
-
   render () {
-    const { rank } = this.props;
-    const { stats } = this.state;
+    const { rank, stats, handleClick, selected } = this.props;
     return (
       <div className='StatsContainer'>
         <div className='StatsContainer-rank'>
@@ -49,7 +27,7 @@ class StatsContainer extends Component {
               return <li
                 className='StatsContainer--li'
                 key={id}
-                onClick={() => this.handleClick(id)}
+                onClick={() => handleClick(id)}
               >
                 <img src={imageSrc} alt={name} />
                 <p>{name}</p>
@@ -58,7 +36,7 @@ class StatsContainer extends Component {
           </ul>
         </div>
         <div className='StatsContainer-stats'>
-          <h3 className='StatsContainer--h3'>{this.state.selected.name}</h3>
+          <h3 className='StatsContainer--h3'>{selected.name}</h3>
           <Stats data={stats} />
         </div>
       </div>
@@ -66,7 +44,31 @@ class StatsContainer extends Component {
   }
 }
 
-export default StatsContainer
+const mapStateToProps = (state) => {
+  const { selected, rank } = state.characterReducer;
+  const { stats } = state.statsReducer;
+
+  return {
+    selected,
+    rank,
+    stats
+  }
+}
+
+const mapDispatchToProps = (dispatch) => ({
+  loadStats: (selected) => {
+    dispatch(getStats(selected))
+  },
+  // todo how to get rank in here? also refactor
+  handleClick: (id) => {
+    const { rank } = this.props;
+    const index = rank.map(r => r.id).indexOf(id);
+    const selected = rank[index];
+    dispatch(getStats(selected))
+  }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(StatsContainer)
 
 StatsContainer.propTypes = {
   rank: PropTypes.arrayOf(PropTypes.object),

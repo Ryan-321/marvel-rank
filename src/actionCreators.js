@@ -17,3 +17,8 @@ export const deleteCharacter = (id) => ({
   type: 'DELETE_CHARACTER',
   payload: id,
 })
+
+export const getStats = (selected) => ({
+  type: 'GET_STATS',
+  payload: selected
+})
