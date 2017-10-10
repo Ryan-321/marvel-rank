@@ -7,7 +7,7 @@
 
 .StatsContainer:after {
   content: "";
-  background: url('../images/statsBG.jpg');
+  background: url('../../images/statsBG.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

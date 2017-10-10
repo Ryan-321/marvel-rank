@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import Form from '../components/Form'
-import CharacterContainer from './CharacterContainer'
-import { setSearchTerm, setValue } from '../actionCreators'
+import Form from '../../components/Form/Form'
+import CharacterContainer from '../CharacterContainer/CharacterContainer'
+import { setSearchTerm, setValue } from '../../actionCreators'
 
 import './Main.css'
 

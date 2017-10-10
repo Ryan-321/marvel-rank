@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import apiKey from './../secret'
-import { createObject } from './../utils/characterHelper'
+import apiKey from '../../secret'
+import { createObject } from '../../utils/characterHelper'
 import { CSSTransitionGroup } from 'react-transition-group'
-import Character from '../components/Character'
-import StatsContainer from './StatsContainer'
-import { getCharacter, deleteCharacter } from '../actionCreators'
+import Character from '../../components/Character/Character'
+import StatsContainer from '../StatsContainer/StatsContainer'
+import { getCharacter, deleteCharacter } from '../../actionCreators'
 import './CharacterContainer.css'
 
 class CharacterContainer extends Component {

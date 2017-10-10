@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import Stats from '../components/Stats'
-import { getStats } from '../utils/characterHelper'
+import Stats from '../../components/Stats/Stats'
+import { getStats } from '../../utils/characterHelper'
 import './StatsContainer.css'
 
 class StatsContainer extends Component {
@@ -22,8 +22,6 @@ class StatsContainer extends Component {
   }
 
   componentWillReceiveProps (nextProps) {
-    console.log(nextProps);
-    console.log(this.props);
     if (this.props.selected !== nextProps.selected) {
       const selected = nextProps.selected;
       const stats = getStats(selected);
