@@ -59,7 +59,7 @@ const mapDispatchToProps = (dispatch) => ({
   loadStats: (selected) => {
     dispatch(getStats(selected))
   },
-  // todo how to get rank in here? also refactor
+  // pretty hacky, willing to deal with it on this size app
   handleClick: (id) => {
     const { rank } = this.props;
     const index = rank.map(r => r.id).indexOf(id);
