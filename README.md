@@ -9,6 +9,7 @@
   - create-react-app
   - d3
   - Marvel API
+  - updated to redux - 9/16/17
 
 ### Features
 

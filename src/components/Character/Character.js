@@ -12,7 +12,6 @@ const Character = ({name, bio, imageSrc, index, handleDelete, wiki}) => {
             target='_blank'
             className='Character--link'
             rel='noopener noreferrer'>
-            learn more
         </a>
         <span
             className='Character--delete'
