@@ -3,18 +3,18 @@ import PropTypes from 'prop-types'
 import './Character.css'
 
 const Character = ({name, bio, imageSrc, index, handleDelete, wiki}) => {
-    return <div className='Character' id={index}>
-        <img src={imageSrc} alt={name} className='Character--img'/>
-        <h2 className='Character--name'>{name}</h2>
-        <p className='Character--bio'><span>Bio:</span> {bio}</p>
+    return <div className='character' id={index}>
+        <img src={imageSrc} alt={name} className='character--img'/>
+        <h2 className='character--name'>{name}</h2>
+        <p className='character--bio'><span>Bio:</span> {bio}</p>
         <a
             href={wiki}
             target='_blank'
-            className='Character--link'
+            className='character--link'
             rel='noopener noreferrer'>
         </a>
         <span
-            className='Character--delete'
+            className='character--delete'
             onClick={() => handleDelete(index)}
         />
     </div>

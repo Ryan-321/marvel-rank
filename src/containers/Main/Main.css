@@ -4,3 +4,35 @@
   flex-wrap: wrap;
   justify-content: flex-start;
 }
+
+.character-container--list {
+  width: 90%;
+  margin: 1em auto;
+}
+
+.character-container-transitions {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.transition-cards-enter {
+  opacity: 0.01;
+  left: 50px;
+}
+
+.transition-cards-enter.transition-cards-enter-active {
+  opacity: 1;
+  left: 0;
+  transition: opacity 700ms, left 700ms;
+}
+
+.transition-cards-leave {
+  opacity: 1;
+}
+
+.transition-cards-leave.transition-cards-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}
