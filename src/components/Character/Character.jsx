@@ -4,7 +4,7 @@ import './Character.css'
 
 const Character = ({name, bio, imageSrc, index, handleDelete, wiki}) => {
     return <div className='character' id={index}>
-        <img src={imageSrc} alt={name} className='character--img'/>
+        <img src={imageSrc} alt={name} />
         <h2 className='character--name'>{name}</h2>
         <p className='character--bio'><span>Bio:</span> {bio}</p>
         <a
@@ -20,7 +20,7 @@ const Character = ({name, bio, imageSrc, index, handleDelete, wiki}) => {
     </div>
 };
 
-export default Character
+export default Character;
 
 Character.propTypes = {
   name: PropTypes.string.isRequired,

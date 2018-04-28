@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import * as d3 from 'd3'  // add destructor
-import './Stats.css'
+import './Chart.css'
 
-class Stats extends Component {
+export default class Chart extends Component {
   constructor (props) {
     super(props);
     this.createChart = this.createChart.bind(this)
@@ -20,7 +20,6 @@ class Stats extends Component {
 
     const data = this.props.data;
     const node = this.refs.chart;
-    console.log('node', node);
 
     const dataMax = d3.max(data);
     const xScale = d3.scaleLinear()
@@ -90,8 +89,6 @@ class Stats extends Component {
   }
 }
 
-export default Stats
-
-Stats.propTypes = {
+Chart.propTypes = {
   stats: PropTypes.arrayOf(PropTypes.number)
 };
