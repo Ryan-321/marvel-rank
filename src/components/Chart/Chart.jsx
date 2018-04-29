@@ -4,16 +4,12 @@ import * as d3 from 'd3'  // add destructor
 import './Chart.css'
 
 export default class Chart extends Component {
-  constructor (props) {
-    super(props);
-    this.createChart = this.createChart.bind(this)
-  }
-
   componentDidUpdate () {
+    console.log('')
     this.createChart()
   }
 
-  createChart () {
+  createChart = () => {
     const margin = {top: 20, right: 20, bottom: 10, left: 75};
     const width = 900 - margin.left - margin.right;
     const height = 200 - margin.top - margin.bottom;

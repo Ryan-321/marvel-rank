@@ -1,6 +1,16 @@
+export const marvelLoad = (name) => ({
+  type: 'MARVEL_LOAD',
+  payload: name,
+})
 
-export const setSearchTerm = () => ({
-  type: 'SET_SEARCH_TERM'
+export const marvelLoadSuccess = (data) => ({
+  type: 'MARVEL_LOAD_SUCCESS',
+  payload: data,
+})
+
+export const marvelLoadError = (message) => ({
+  type: 'MARVEL_LOAD_FAILED',
+  payload: message,
 })
 
 export const setValue = (value) => ({
@@ -16,9 +26,4 @@ export const getCharacter = (value) => ({
 export const deleteCharacter = (id) => ({
   type: 'DELETE_CHARACTER',
   payload: id,
-})
-
-export const getStats = (selected) => ({
-  type: 'GET_STATS',
-  payload: selected
 })
