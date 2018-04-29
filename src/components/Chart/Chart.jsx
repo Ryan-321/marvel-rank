@@ -5,7 +5,6 @@ import './Chart.css'
 
 export default class Chart extends Component {
   componentDidUpdate () {
-    console.log('')
     this.createChart()
   }
 
@@ -80,7 +79,7 @@ export default class Chart extends Component {
 
   render () {
     return (
-      <svg width={900} height={200} ref='chart' />
+      <svg width={900} height={200} ref={el => this.chart = el} />
     )
   }
 }

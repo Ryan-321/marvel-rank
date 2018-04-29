@@ -1,20 +1,21 @@
-.Form {
+form {
   line-height: 3em;
   padding: 1.5em;
   margin: 1em auto;
 }
 
-.Form--label {
+form label {
   font-family: 'Montserrat', sans-serif;
   vertical-align: middle;
   font-size: 1.3em;
 }
+
 input,
 input:-webkit-autofill {
   background-color: whitesmoke !important;
 }
 
-.Form--input {
+form input {
   box-shadow: 1px 1px 1px rgba(0,0,0,.1);
   background: whitesmoke;
   font-size: 1.1em;
@@ -23,7 +24,7 @@ input:-webkit-autofill {
   width: 200px;
 }
 
-.Form--btn {
+form button {
   box-shadow: 1px 1px 1px rgba(0,0,0,.2);
   border: none;
   color: whitesmoke;
@@ -35,8 +36,8 @@ input:-webkit-autofill {
   cursor: pointer;
 }
 
-.Form--input,
-.Form--btn {
+form input,
+form button {
   vertical-align: middle;
   outline: none;
 }

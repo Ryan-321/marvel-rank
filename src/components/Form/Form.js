@@ -3,16 +3,15 @@ import PropTypes from 'prop-types'
 import './Form.css'
 
 const Form = ({handleSubmit, handleChange, value}) => (
-    <form className='Form' onSubmit={(e) => {e.preventDefault(); handleSubmit(value)}}>
-      <label className='Form--label'>Enter a character: </label>
+    <form onSubmit={(e) => {e.preventDefault(); handleSubmit(value)}}>
+      <label>Enter a character: </label>
       <input
         type='text'
         name='city_name'
-        className='Form--input'
         onChange={handleChange}
         value={value}
       />
-      <button type='submit' className='Form--btn'>Find</button>
+      <button type='submit'>Find</button>
     </form>
   )
 

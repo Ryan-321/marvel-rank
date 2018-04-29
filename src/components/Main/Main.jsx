@@ -19,43 +19,44 @@ class Main extends Component {
       stats,
     } = this.props
 
+    const statsContainer = rank.length > 0 ?
+      (
+        <div className='statsContainer'>
+          <div className='rank'>
+            <h3>Ranking</h3>
+            <ul>
+              {rank.map(({imageSrc, name, id}) => {
+                return <li
+                  key={id}
+                  onClick={(e) => {e.preventDefault(); handleClick(id)}}
+                >
+                  <img src={imageSrc} alt={name} />
+                  <p>{name}</p>
+                </li>
+              })}
+            </ul>
+          </div>
+          <div>
+            <h3>{selected.name}</h3>
+            <Chart data={stats} />
+          </div>
+        </div>
+      ) : ''
+
     return (
-      <main className='Main'>
-        <section className='Main--section'>
+      <main>
+        <div className='form'>
           <Form
             handleChange={handleChange}
             handleSubmit={handleSubmit}
             value={value}
           />
-        </section>
-        <div className='character-container'>
-          {
-            rank.length > 0 &&
-            <div className='StatsContainer'>
-              <div className='StatsContainer-rank'>
-                <h3 className='StatsContainer--h3'>Ranking</h3>
-                <ul>
-                  {rank.map(({imageSrc, name, id}) => {
-                    return <li
-                      className='StatsContainer--li'
-                      key={id}
-                      onClick={(e) => {e.preventDefault(); handleClick(id)}}
-                    >
-                      <img src={imageSrc} alt={name} />
-                      <p>{name}</p>
-                    </li>
-                  })}
-                </ul>
-              </div>
-              <div className='StatsContainer-stats'>
-                <h3 className='StatsContainer--h3'>{selected.name}</h3>
-                <Chart data={stats} />
-              </div>
-            </div>
-          }
-          <section className='character-container--list'>
+        </div>
+        <div className='characterContainer'>
+          { statsContainer }
+          <div className='characterContainer--list'>
             <CSSTransitionGroup
-              className='character-container-transitions'
+              className='characterContainer-transitions'
               transitionName='transition-cards'
               transitionEnterTimeout={500}
               transitionLeaveTimeout={300}
@@ -74,7 +75,7 @@ class Main extends Component {
                     />
               )}
             </CSSTransitionGroup>
-          </section>
+          </div>
         </div>
       </main>
     )

@@ -5,16 +5,16 @@ import './Character.css'
 const Character = ({name, bio, imageSrc, index, handleDelete, wiki}) => {
     return <div className='character' id={index}>
         <img src={imageSrc} alt={name} />
-        <h2 className='character--name'>{name}</h2>
-        <p className='character--bio'><span>Bio:</span> {bio}</p>
+        <h2 className='name'>{name}</h2>
+        <p className='bio'><span>Bio:</span> {bio}</p>
         <a
             href={wiki}
             target='_blank'
-            className='character--link'
+            className='link'
             rel='noopener noreferrer'>
         </a>
         <span
-            className='character--delete'
+            className='delete'
             onClick={() => handleDelete(index)}
         />
     </div>

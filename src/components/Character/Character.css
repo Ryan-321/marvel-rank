@@ -22,7 +22,7 @@
   display: inherit;
 }
 
-.character--delete {
+.delete {
   position: absolute;
   top: -10px;
   right: -10px;
@@ -35,18 +35,18 @@
   display: none;
 }
 
-.character--name,
-.character--bio span {
+.name,
+.bio span {
   font-family: 'Montserrat', sans-serif;
   text-transform: uppercase;
 }
 
-.character--bio {
+.bio {
   line-height: 1.5em;
   font-weight: 100;
 }
 
-.character--link {
+.link {
   text-decoration: none;
   color: rgba(0,0,0,.5);
   font-size: small;
@@ -55,6 +55,6 @@
   left: 125px;
 }
 
-.character--link:hover {
+.link:hover {
   text-decoration: underline;
 }

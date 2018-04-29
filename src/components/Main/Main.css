@@ -1,16 +1,16 @@
-.Main--section {
+.form {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
 }
 
-.character-container--list {
+.characterContainer--list {
   width: 90%;
   margin: 1em auto;
 }
 
-.character-container-transitions {
+.characterContainer-transitions {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -37,14 +37,14 @@
   transition: opacity 300ms ease-in;
 }
 
-.StatsContainer {
+.statsContainer {
   position: relative;
   padding: 1em 3em;
   box-shadow: 0 0 2px rgba(0,0,0,.5),
   2px 2px 2px rgba(0,0,0,.15);
 }
 
-.StatsContainer:after {
+.statsContainer:after {
   content: "";
   background: url('../../images/statsBG.jpg');
   background-size: cover;
@@ -59,16 +59,16 @@
   z-index: -1;
 }
 
-.StatsContainer svg {
+.statsContainer svg {
   padding: 1em;
 }
 
-.StatsContainer--h3 {
+.statsContainer h3 {
   font-family: 'Montserrat', sans-serif;
   letter-spacing: 1px;
 }
 
-.StatsContainer-rank ul {
+.rank ul {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -76,7 +76,7 @@
   padding: .75em;
 }
 
-.StatsContainer--li {
+.statsContainer li {
   margin-left: 25px;
   cursor: pointer;
   position: relative;
@@ -89,18 +89,18 @@
   color: #212121;
 }
 
-.StatsContainer--li:hover {
+.statsContainer li:hover {
   top: -3px;
 }
 
-.StatsContainer--li > img {
+.statsContainer li > img {
   width: 25px;
   position: relative;
   border-radius: 50%;
   top: 2px;
 }
 
-.StatsContainer--li > p {
+.statsContainer li > p {
   margin: 0;
   display: inline;
   padding: 0;
