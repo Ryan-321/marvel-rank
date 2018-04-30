@@ -15,12 +15,14 @@ const mapStateToProps = ({
     rank,
     selected,
     stats,
+    loading,
 }}) => ({
   value,
   characters,
   rank,
   selected,
   stats,
+  loading,
 })
 
 const mapDispatchToProps = (dispatch) => ({

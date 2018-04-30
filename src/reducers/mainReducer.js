@@ -10,6 +10,7 @@ const DEFAULT_STATE = {
   rank: [],
   selected: {},
   stats: [],
+  loading: false,
 }
 
 const mainReducer = (state = DEFAULT_STATE, action) => {
@@ -20,6 +21,11 @@ const mainReducer = (state = DEFAULT_STATE, action) => {
         ...state,
         value: payload,
       }
+    }
+    case 'MARVEL_LOAD':
+    return {
+      ...state,
+      loading: true,
     }
     case 'MARVEL_LOAD_SUCCESS':
       const character = createCharacter(action.payload)
@@ -34,6 +40,7 @@ const mainReducer = (state = DEFAULT_STATE, action) => {
         selected: character,
         stats,
         characters,
+        loading: false,
       }
     case 'MARVEL_LOAD_FAILED':
       console.log('failure :0(')

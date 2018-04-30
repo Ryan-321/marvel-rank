@@ -1,8 +1,10 @@
 .form {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
+  text-align: center;
+}
+
+.spinner {
+  display: inline-block;
+  width: 100px;
 }
 
 .characterContainer--list {

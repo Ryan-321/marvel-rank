@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import Form from '../../components/Form/Form'
 import { CSSTransitionGroup } from 'react-transition-group'
-import Character from '../Character/index'
-import Chart from '../Chart/index';
+import Character from '../Character'
+import Chart from '../Chart';
+import Spinner from '../Spinner'
 import './Main.css'
 
 class Main extends Component {
@@ -17,6 +18,7 @@ class Main extends Component {
       rank,
       selected,
       stats,
+      loading,
     } = this.props
 
     const statsContainer = rank.length > 0 ?
@@ -43,6 +45,7 @@ class Main extends Component {
         </div>
       ) : ''
 
+
     return (
       <main>
         <div className='form'>
@@ -51,6 +54,9 @@ class Main extends Component {
             handleSubmit={handleSubmit}
             value={value}
           />
+          <div className='spinner'>
+            { loading && <Spinner /> }
+          </div>
         </div>
         <div className='characterContainer'>
           { statsContainer }
