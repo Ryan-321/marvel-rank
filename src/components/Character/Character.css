@@ -18,7 +18,7 @@
   top: -5px;
 }
 
-.character:hover .character--delete {
+.character:hover .delete {
   display: inherit;
 }
 

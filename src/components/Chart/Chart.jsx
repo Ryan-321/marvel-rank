@@ -4,6 +4,10 @@ import * as d3 from 'd3'  // add destructor
 import './Chart.css'
 
 export default class Chart extends Component {
+  componentDidMount() {
+    this.createChart()
+  }
+
   componentDidUpdate () {
     this.createChart()
   }
@@ -14,7 +18,8 @@ export default class Chart extends Component {
     const height = 200 - margin.top - margin.bottom;
 
     const data = this.props.data;
-    const node = this.refs.chart;
+    const node = this.refs.chart
+    console.log('node', node)
 
     const dataMax = d3.max(data);
     const xScale = d3.scaleLinear()
@@ -79,7 +84,7 @@ export default class Chart extends Component {
 
   render () {
     return (
-      <svg width={900} height={200} ref={el => this.chart = el} />
+      <svg width={900} height={200} ref='chart' />
     )
   }
 }
