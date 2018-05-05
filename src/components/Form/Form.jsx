@@ -3,7 +3,13 @@ import pt from 'prop-types'
 import Spinner from '../Spinner'
 import './Form.css'
 
-const Form = ({ handleSubmit, handleChange, value, loading, noData }) => (
+const Form = ({
+  handleSubmit,
+  handleChange,
+  value,
+  loading,
+  noData,
+}) => (
     <form
       onSubmit={(e) => {e.preventDefault(); handleSubmit(value)}}
       autoComplete='off'>
