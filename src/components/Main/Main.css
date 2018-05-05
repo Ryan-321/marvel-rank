@@ -2,11 +2,6 @@
   text-align: center;
 }
 
-.spinner {
-  display: inline-block;
-  width: 100px;
-}
-
 .characterContainer--list {
   width: 90%;
   margin: 1em auto;

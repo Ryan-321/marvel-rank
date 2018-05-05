@@ -1,8 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Spinner from '../Spinner'
 import './Form.css'
 
-const Form = ({handleSubmit, handleChange, value}) => (
+const Form = ({ handleSubmit, handleChange, value, loading }) => (
     <form onSubmit={(e) => {e.preventDefault(); handleSubmit(value)}}>
       <label>Enter a character: </label>
       <input
@@ -11,7 +12,9 @@ const Form = ({handleSubmit, handleChange, value}) => (
         onChange={handleChange}
         value={value}
       />
-      <button type='submit'>Find</button>
+      <button type='submit'>
+        {loading ? <Spinner /> : 'Find'}
+      </button>
     </form>
   )
 
@@ -21,4 +24,5 @@ Form.propTypes = {
   handleChange: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   value: PropTypes.string.isRequired,
+  loading: PropTypes.boolean,
 };

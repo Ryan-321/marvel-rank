@@ -1,7 +1,6 @@
 form {
-  line-height: 3em;
   padding: 1.5em;
-  margin: 1em auto;
+  margin: 1em;
   display: inline-block;
 }
 
@@ -35,6 +34,7 @@ form button {
   background: #212121;
   transform: skewX(-10deg);
   cursor: pointer;
+  width: 100px;
 }
 
 form input,
