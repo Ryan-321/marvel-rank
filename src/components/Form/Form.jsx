@@ -3,8 +3,10 @@ import pt from 'prop-types'
 import Spinner from '../Spinner'
 import './Form.css'
 
-const Form = ({ handleSubmit, handleChange, value, loading }) => (
-    <form onSubmit={(e) => {e.preventDefault(); handleSubmit(value)}}>
+const Form = ({ handleSubmit, handleChange, value, loading, noData }) => (
+    <form
+      onSubmit={(e) => {e.preventDefault(); handleSubmit(value)}}
+      autoComplete='off'>
       <label>Enter a character: </label>
       <input
         type='text'
@@ -15,6 +17,10 @@ const Form = ({ handleSubmit, handleChange, value, loading }) => (
       <button type='submit'>
         {loading ? <Spinner /> : 'Find'}
       </button>
+      {
+        noData &&
+        <h4>No character found. Try again</h4>
+      }
     </form>
   )
 
@@ -25,4 +31,5 @@ Form.propTypes = {
   handleSubmit: pt.func.isRequired,
   value: pt.string.isRequired,
   loading: pt.bool.isRequired,
+  noData: pt.bool.isRequired,
 };

@@ -12,6 +12,7 @@ const DEFAULT_STATE = {
   selected: {},
   stats: [],
   loading: false,
+  noData: false,
 }
 
 const mainReducer = (state = DEFAULT_STATE, action) => {
@@ -42,9 +43,12 @@ const mainReducer = (state = DEFAULT_STATE, action) => {
         stats,
         characters,
         loading: false,
+        noData: false,
       }
     case 'MARVEL_LOAD_FAILED':
-      console.log('failure :0(')
+      // throw new Error('failure :0(')
+      // would do something here to tell user theres an error
+      // but not for this size app
       return DEFAULT_STATE
     case 'GET_CHARACTER': {
       const [...characters] = state.characters
@@ -57,6 +61,13 @@ const mainReducer = (state = DEFAULT_STATE, action) => {
         selected: character,
       }
     }
+    case 'MARVEL_NO_DATA':
+      return {
+        ...state,
+        loading: false,
+        value: '',
+        noData: true,
+      }
     case 'DELETE_CHARACTER': {
       const id = payload
       const [...characters] = state.characters

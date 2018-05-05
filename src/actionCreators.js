@@ -27,3 +27,7 @@ export const deleteCharacter = (id) => ({
   type: 'DELETE_CHARACTER',
   payload: id,
 })
+
+export const marvelNoData = () => ({
+  type: 'MARVEL_NO_DATA'
+})

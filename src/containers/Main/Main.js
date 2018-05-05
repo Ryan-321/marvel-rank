@@ -15,6 +15,7 @@ const mapStateToProps = ({
     selected,
     stats,
     loading,
+    noData,
 }}) => ({
   value,
   characters,
@@ -22,6 +23,7 @@ const mapStateToProps = ({
   selected,
   stats,
   loading,
+  noData,
 })
 
 const mapDispatchToProps = (dispatch) => ({

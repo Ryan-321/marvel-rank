@@ -20,6 +20,7 @@ class Main extends Component {
       selected,
       stats,
       loading,
+      noData,
     } = this.props
 
     const statsContainer = rank.length > 0 ?
@@ -55,6 +56,7 @@ class Main extends Component {
             handleSubmit={handleSubmit}
             value={value}
             loading={loading}
+            noData={noData}
           />
         </div>
         <div className='characterContainer'>
@@ -94,6 +96,7 @@ Main.propTypes = {
   handleSubmit: pt.func.isRequired,
   value: pt.string.isRequired,
   loading: pt.bool.isRequired,
+  noData: pt.bool.isRequired,
   characters: pt.arrayOf(Charactertype),
   rank: pt.arrayOf(Charactertype),
   selected: Charactertype,
