@@ -1,27 +1,27 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import pt from 'prop-types'
 import * as d3 from 'd3'  // add destructor
 import './Chart.css'
 
-export default class Chart extends Component {
+class Chart extends Component {
   componentDidMount() {
     this.createChart()
   }
 
-  componentDidUpdate () {
-    this.createChart()
+  componentDidUpdate (prevProps) {
+    if (prevProps.data !== this.props.data) {
+      this.createChart()
+    }
   }
 
   createChart = () => {
     const margin = {top: 20, right: 20, bottom: 10, left: 75};
     const width = 900 - margin.left - margin.right;
     const height = 200 - margin.top - margin.bottom;
-
     const data = this.props.data;
     const node = this.refs.chart
-    console.log('node', node)
-
     const dataMax = d3.max(data);
+
     const xScale = d3.scaleLinear()
       .domain([0, dataMax])
       .range([0, width]);
@@ -90,5 +90,11 @@ export default class Chart extends Component {
 }
 
 Chart.propTypes = {
-  stats: PropTypes.arrayOf(PropTypes.number)
+  data: pt.arrayOf(pt.number),
 };
+
+Chart.propTypes = {
+  data: [],
+}
+
+export default Chart

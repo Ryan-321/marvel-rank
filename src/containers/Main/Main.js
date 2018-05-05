@@ -7,7 +7,6 @@ import {
   deleteCharacter,
 } from '../../actionCreators'
 
-
 const mapStateToProps = ({
   mainReducer: {
     value,

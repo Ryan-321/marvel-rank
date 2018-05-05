@@ -22,9 +22,7 @@ export const rank = (characters) => {
 }
 
 export const extractStats = (character) => {
-  const stats = [];
   const keys = ['comics', 'events', 'stories', 'series'];
-  keys.forEach(key => stats.push(character[key]));
-  return stats
+  return keys.map(key => character[key]);
 }
 

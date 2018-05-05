@@ -1,6 +1,7 @@
 import {
   createCharacter,
-  extractStats, rank,
+  extractStats,
+  rank,
 } from '../utils/characterHelper'
 
 

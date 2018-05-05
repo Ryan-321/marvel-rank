@@ -6,5 +6,8 @@ export const fetchDataFromAPI = (name) => {
     `https://gateway.marvel.com:443/v1/public/characters?name=${name}&apikey=${apiKey}`
   return fetch(url)
     .then(response => response.json())
-    .then(response => response.data.results[0])
+    .then(response => {
+     // debugger
+     return response.data.results[0]
+    })
 }

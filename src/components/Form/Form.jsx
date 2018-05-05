@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import pt from 'prop-types'
 import Spinner from '../Spinner'
 import './Form.css'
 
@@ -21,8 +21,8 @@ const Form = ({ handleSubmit, handleChange, value, loading }) => (
 export default Form
 
 Form.propTypes = {
-  handleChange: PropTypes.func.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
-  value: PropTypes.string.isRequired,
-  loading: PropTypes.boolean,
+  handleChange: pt.func.isRequired,
+  handleSubmit: pt.func.isRequired,
+  value: pt.string.isRequired,
+  loading: pt.bool.isRequired,
 };

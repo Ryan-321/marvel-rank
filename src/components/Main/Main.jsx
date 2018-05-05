@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
+import pt from 'prop-types'
 import Form from '../Form/Form'
 import { CSSTransitionGroup } from 'react-transition-group'
 import Character from '../Character'
 import Chart from '../Chart';
+import { Charactertype } from '../../types'
 import './Main.css'
 
 class Main extends Component {
@@ -19,8 +21,6 @@ class Main extends Component {
       stats,
       loading,
     } = this.props
-
-    console.log('main loading', loading)
 
     const statsContainer = rank.length > 0 ?
       (
@@ -85,6 +85,26 @@ class Main extends Component {
       </main>
     )
   }
+}
+
+Main.propTypes = {
+  handleChange: pt.func.isRequired,
+  handleDelete: pt.func.isRequired,
+  handleClick: pt.func.isRequired,
+  handleSubmit: pt.func.isRequired,
+  value: pt.string.isRequired,
+  loading: pt.bool.isRequired,
+  characters: pt.arrayOf(Charactertype),
+  rank: pt.arrayOf(Charactertype),
+  selected: Charactertype,
+  stats: pt.arrayOf(pt.number),
+}
+
+Main.defaultProps = {
+  characters: [],
+  rank: [],
+  selected: {},
+  stats: [],
 }
 
 export default Main
