@@ -2,19 +2,17 @@
 
   A web application where you can search for a Marvel character and see the stats for Comics, Events, Series and Stories and where they rank among there peers.
 
-  https://floating-sierra-52454.herokuapp.com/
+  https://rocky-shore-54267.herokuapp.com/
 
 ## Technologies
-  - react
   - create-react-app
   - d3
   - Marvel API
-  - updated to redux - 9/16/17
+  - redux(saga for async)
+  - jest
 
-### Features
-
-  - Automatically ranks characters based on the sum of their stats
-  - Can click on characters ranking to pull up their stats
-  - Bar chart updates in realtime
-  - Can delete character cards
-  - Link at bottom of card opens in separate tab
+### How to Run
+- git clone https://github.com/Ryan-321/marvel-rank.git
+- npm install
+- npm start
+- Ready to go!
