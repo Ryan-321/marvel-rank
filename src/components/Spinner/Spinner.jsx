@@ -1,9 +1,6 @@
 import React from 'react'
 import './Spinner.css'
 
-
-
-
 const Spinner = () =>
   <div id="spinner">
     <div className={'loader loader--flipHoz'}>
