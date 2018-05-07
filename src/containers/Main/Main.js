@@ -27,7 +27,6 @@ const mapStateToProps = ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-
   handleChange: (e) => {
     dispatch(setValue(e.target.value))
   },
